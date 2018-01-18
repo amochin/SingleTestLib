@@ -10,6 +10,8 @@ However using low-level keywords from these libraries directly in RF test cases 
 A solution is **moving the mid-level keywords to test libraries** and implementing them with the whole power of a programming language (e.g. Python or Java).
 There are different tools and approaches for that. Basically you can either create your own test libraries or take one of already existing solutions - and _SingleTestLib_ is one of them.
 
+Unlike other tools, _SingleTestLib_ doesn't help to create multiple RF test libraries - instead, it acts as a single entry point to all your keywords (though allowing to structure them).
+
 With _SingleTestLib_ you implement keywords just as usual Python functions, ordering them in the module structure.
 The _SingleTestLib_ scans all functions in .py modules in the _keywords_ subfolder and makes them available as keywords in RF test cases.
 
