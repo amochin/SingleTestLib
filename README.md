@@ -20,7 +20,7 @@ The _SingleTestLib_ scans all functions in .py modules in the _keywords_ subfold
 - No need to include every module as separate test library in RF test cases and maintain the list - you just reference the _SingleTestLib_ only once
 - Keywords are available in RF via _module name_._function name_ names - easy search and use
 - Enjoy all benefits of RIDE intelligent functions - autocomplete, getting arguments and docs
-- Works with any Python-ready automation library (e.g. SeleniumLibrary or AutoItLibrary)
+- Works with any Python-ready automation library (e.g. Selenium or AutoIt)
 - Automatic taking screenshots in case of failed keyword execution
 
 # Quick Start 
