@@ -5,9 +5,9 @@ Universal RobotFramework test library for implementing Python based keywords
 RobotFramework is an incredible test automation framework with great features for writing keyword-driven tests and reporting.
 It has a lot of test libraries, e.g. _SeleniumLibrary_ or _AutoItLibrary_.
 
-However using low-level keywords from these libraries directly in RF testcases is often not really comfortable (think about loops, some logical, arithmetic and string operations etc.).
+However using low-level keywords from these libraries directly in RF test cases is often not really comfortable (think about loops, some logical, arithmetic and string operations etc.).
 
-A solution is **moving the mid-level keywords to test libraries** and implementing them with the whole power of a programmic language (e.g. Python or Java).
+A solution is **moving the mid-level keywords to test libraries** and implementing them with the whole power of a programming language (e.g. Python or Java).
 There are different tools and approaches for that. Basically you can either create your own test libraries or take one of already existing solutions - and _SingleTestLib_ is one of them.
 
 With _SingleTestLib_ you implement keywords just as usual Python functions, ordering them in the module structure.
