@@ -13,6 +13,8 @@ There are different tools and approaches for that. Basically you can either crea
 Unlike other tools, _SingleTestLib_ doesn't help you to create multiple RF test libraries - instead, it acts as a **single entry point to all your keywords** (though allowing to structure them).
 
 With _SingleTestLib_ you implement keywords just as usual Python functions, ordering them in the module structure.
+One module might correspond to one web page or a logical part of your web app.
+
 The _SingleTestLib_ scans all functions in .py modules in the _keywords_ subfolder and makes them available as keywords in RF test cases.
 
 # Key points
