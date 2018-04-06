@@ -3,8 +3,10 @@
 __version__ = '0.1'
 
 import os, sys, inspect
+import robot
 from datetime import datetime
 import robot.api.logger as logger
+from robot.libraries.BuiltIn import BuiltIn
 try :
     from PIL import ImageGrab                    # For screen capture via Python Image Library (PIL)
 except :
@@ -45,7 +47,7 @@ class SingleTestLib:
 				logger.warn("Failed taking screenshot - Python Imaging Library (PIL) is not installed")
 			else:
 				try:
-					common.Screenshot("Screenshots\\{0} - {1}.png".format(name, datetime.now().strftime('%Y-%m-%d__%H_%M_%S')))
+					self._takeScreenshot("Screenshots\\{0} - {1}.png".format(name, datetime.now().strftime('%Y-%m-%d__%H_%M_%S')))
 				except Exception as e:
 					logger.warn("Failed taking screenshot: {0}".format(e))
 			raise ex #reraise the exception
@@ -98,4 +100,36 @@ class SingleTestLib:
 		functionName = splitted[len(splitted)-1] #last part is always the function name
 		moduleName = name[:-len("." + functionName)] #all in front of the function name is the module name		
 		return getattr(globals()[moduleName], functionName)
+		
+	def _takeScreenshot(self, FilePath = ''):
+		"""
+		Captures a full screen image, saves it into the specified file and logs in the Robot test log.		
+		_Parameters:_
+			- *FilePath* - optional, relative to the current Robot Framework Output Dir. If not specified, the default name is used.
+		"""		
+		# Check that PIL is installed
+		if ImageGrab == None :
+			raise RuntimeError("Python Imaging Library (PIL) is not installed, but is required for GetScreenImage")
+		#
+		# Check for a valid FilePath and make sure the directories exist
+		#
+		filePath = FilePath
+		if filePath == '':
+			filePath = "Screenshots\\Screenshot - {0}.png".format(datetime.datetime.now().strftime('%Y-%m-%d__%H_%M_%S'))
+		
+		if filePath and os.path.isabs(filePath):
+			raise RuntimeError("Given FilePath='%s' must be relative to Robot outpudir" % filePath)
+		fullFilePath = os.path.join(BuiltIn().get_variable_value("${OUTPUT DIR}"), filePath) #image output file path is relative to robot framework output
+		if not os.path.exists(os.path.split(fullFilePath)[0]):
+			os.makedirs(os.path.split(fullFilePath)[0])
+		#
+		# Capture and save the screen image of the whole screen
+		#
+		GrabbedImage = ImageGrab.grab()     # store screenshot as "RGB" Image
+		GrabbedImage.save(fullFilePath)     # PIL evaluates extension
+		#
+		# Embed the screenshot in the Robot Framework log file
+		#
+		robot.api.logger.info('<td></td></tr><tr><td colspan="3"><a href="%s">'
+				   '<img src="%s" width="700px"></a></td></tr>' % (filePath, filePath), html=True)
 	#---------------------------------------------------------------
