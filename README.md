@@ -3,7 +3,7 @@ Universal RobotFramework test library for implementing Python based keywords
 
 # Introduction
 RobotFramework is an incredible test automation framework with great features for writing keyword-driven tests and reporting.
-It has a lot of test libraries, e.g. _SeleniumLibrary_ or _AutoItLibrary_.
+It has a lot of test libraries, e.g. _SeleniumLibrary_, _AutoItLibrary_ or _SikuliLibrary_.
 
 However using low-level keywords from these libraries directly in RF test cases is often not really comfortable (think about loops, some logical, arithmetic and string operations etc.).
 
@@ -22,7 +22,7 @@ The _SingleTestLib_ scans all functions in .py modules in the _keywords_ subfold
 - No need to include every module as separate test library in RF test cases and maintain the list - you just reference the _SingleTestLib_ only once
 - Keywords are available in RF via _module name_._function name_ names - easy search and use
 - Enjoy all benefits of RIDE intelligent functions - autocomplete, getting arguments and docs
-- Works with any Python-ready automation library (e.g. Selenium or AutoIt)
+- Works with any Python-ready automation library (e.g. Selenium, AutoIt or Sikuli)
 - Automatic taking screenshots in case of failed keyword execution
 
 # Quick Start 
@@ -36,3 +36,13 @@ See module and test case examples.
 - Python (so far tested with Python 2.7)
 - RobotFramework - http://robotframework.org/
 - Pillow library for taking screenshot - https://pillow.readthedocs.io/en/5.0.0/
+- Automaton libraries you want to use and necessary Python adapter, e.g.:
+    - **Selenium:**
+        - https://pypi.python.org/pypi/selenium
+        - Aalso requires a webdriver for your browser
+    - **AutoIt:**
+        - https://www.autoitscript.com/site/autoit/downloads/
+        - Also requires pywin32 for using the AutoItX COM-Control in Python - https://sourceforge.net/projects/pywin32/files/pywin32/
+    - **Sikuli:**
+        - SikuliX - http://sikulix.com/
+        - RobotFramework SikuliLibrary - https://github.com/rainmanwy/robotframework-SikuliLibrary
