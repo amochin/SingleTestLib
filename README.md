@@ -17,6 +17,9 @@ One module might correspond to one web page or a logical part of your web app.
 
 The _SingleTestLib_ scans all functions in .py modules in the _keywords_ subfolder and makes them available as keywords in RF test cases.
 
+# Architecture
+![Architecture picture](Architecture.png)
+
 # Key points
 - Implement complex keywords in Python
 - No need to include every module as separate test library in RF test cases and maintain the list - you just reference the _SingleTestLib_ only once
